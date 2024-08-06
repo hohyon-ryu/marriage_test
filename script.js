@@ -19,6 +19,15 @@ function loadQuiz() {
     });
 
     quizElement.innerHTML = quizHTML;
+
+    // Add event listeners to radio buttons
+    const radioButtons = quizElement.querySelectorAll('input[type="radio"]');
+    radioButtons.forEach(radio => {
+        radio.addEventListener('change', () => {
+            // This will trigger the CSS rule to bold the label
+            radio.checked = true;
+        });
+    });
 }
 
 function calculateScore(formData) {
@@ -44,11 +53,11 @@ function showResults(score, selectedScores) {
     scoreElement.innerText = score;
 
     let interpretation = '';
-    if (score >= 65) {
+    if (score >= 55) { // 80% of 68
         interpretation = '매우 균형 잡힌 관계 대처 능력';
-    } else if (score >= 50) {
+    } else if (score >= 41) { // 60% of 68
         interpretation = '안정적인 관계 대처 능력';
-    } else if (score >= 35) {
+    } else if (score >= 27) { // 40% of 68
         interpretation = '관계 대처 능력 향상 필요';
     } else {
         interpretation = '상당한 관계 스킬 개선 필요';
@@ -61,10 +70,9 @@ function showResults(score, selectedScores) {
         const selectedOption = question.options.find(option => option.score === selectedScores[index]);
         detailedHTML += `
             <div class="result-item">
-                <h4 data-score="${selectedOption.score}">질문 ${index + 1}:</h4>
+                <h4 data-score="${selectedOption.score}">질문 ${index + 1}: ${selectedOption.score}점</h4>
                 <p>${question.question}</p>
                 <p>당신의 선택: ${selectedOption.text}</p>
-                <p>점수: ${selectedOption.score}</p>
                 <p>설명: ${selectedOption.explanation}</p>
             </div>
         `;

@@ -57,9 +57,11 @@ h1 {
 
 .options label {
     cursor: pointer;
+    display: inline-block;
+    margin-bottom: 5px;
 }
 
-.options label:hover {
+.options input[type="radio"]:checked + label {
     font-weight: bold;
 }
 
