@@ -1,25 +1,11 @@
-let quizData;
-
-async function fetchQuizData() {
-    try {
-        const response = await fetch('/Users/will_ryu/workspace/personal/data.json');
-        const data = await response.json();
-        return data.questions;
-    } catch (error) {
-        console.error('Error fetching quiz data:', error);
-        return [];
-    }
-}
-
-async function loadQuiz() {
-    quizData = await fetchQuizData();
+function loadQuiz() {
     const quizElement = document.getElementById('quiz');
     let quizHTML = '';
 
-    quizData.forEach((question, index) => {
+    quizData.questions.forEach((question, index) => {
         quizHTML += `
             <div class="question">
-                <h3>${question.question}</h3>
+                <h3>${index + 1}. ${question.question}</h3>
                 <div class="options">
                     ${question.options.map((option) => `
                         <div>
@@ -39,7 +25,7 @@ function calculateScore(formData) {
     let score = 0;
     const selectedScores = [];
 
-    quizData.forEach((_, index) => {
+    quizData.questions.forEach((_, index) => {
         const selectedScore = parseInt(formData.get(`q${index}`));
         score += selectedScore;
         selectedScores.push(selectedScore);
@@ -71,11 +57,11 @@ function showResults(score, selectedScores) {
     interpretationElement.innerText = interpretation;
 
     let detailedHTML = '';
-    quizData.forEach((question, index) => {
+    quizData.questions.forEach((question, index) => {
         const selectedOption = question.options.find(option => option.score === selectedScores[index]);
         detailedHTML += `
             <div class="result-item">
-                <h4>질문 ${index + 1}:</h4>
+                <h4 data-score="${selectedOption.score}">질문 ${index + 1}:</h4>
                 <p>${question.question}</p>
                 <p>당신의 선택: ${selectedOption.text}</p>
                 <p>점수: ${selectedOption.score}</p>

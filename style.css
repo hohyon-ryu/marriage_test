@@ -1,72 +1,149 @@
+:root {
+    --primary: #5FBDB5;
+    --secondary: #FF6B5B;
+    --accent: #FFA789;
+    --background: #F5F5F5;
+    --text: #333333;
+    --light-gray: #E0E0E0;
+}
+
 body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-    color: #333;
+    font-family: 'Noto Sans KR', Arial, sans-serif;
+    line-height: 1.8;
+    color: var(--text);
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
+    background-color: var(--background);
 }
 
 .container {
-    background-color: #f4f4f4;
-    padding: 20px;
-    border-radius: 5px;
+    background-color: #FFFFFF;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 .main-image {
     display: block;
     max-width: 100%;
     height: auto;
-    margin: 0 auto 20px;
+    margin: 0 auto 30px;
+    border-radius: 8px;
 }
 
 h1 {
-    color: #2c3e50;
+    color: var(--primary);
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 30px;
 }
 
 .question {
-    margin-bottom: 20px;
-    border-bottom: 1px solid #ccc;
+    margin-bottom: 30px;
+    border-bottom: 1px solid var(--light-gray);
     padding-bottom: 20px;
+}
+
+.question h3 {
+    color: var(--primary);
+    font-size: 18px;
+    margin-bottom: 15px;
 }
 
 .options {
     margin-left: 20px;
 }
 
+.options label {
+    cursor: pointer;
+}
+
+.options label:hover {
+    font-weight: bold;
+}
+
 button {
-    background-color: #3498db;
-    color: white;
-    padding: 10px 20px;
+    background-color: var(--primary);
+    color: #FFFFFF;
+    padding: 12px 24px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
     margin-top: 20px;
+    transition: background-color 0.3s ease;
+    display: block;
+    margin: 30px auto 0;
 }
 
 button:hover {
-    background-color: #2980b9;
+    background-color: var(--secondary);
 }
 
 #results {
-    margin-top: 20px;
-    border-top: 1px solid #ccc;
+    margin-top: 30px;
+    border-top: 1px solid var(--light-gray);
     padding-top: 20px;
 }
 
 #interpretation {
     font-weight: bold;
-}
-
-#detailed-results {
-    margin-top: 20px;
-}
-
-.result-item {
+    color: var(--secondary);
     margin-bottom: 15px;
 }
 
+.result-item {
+    margin-bottom: 20px;
+    padding: 15px;
+    border-radius: 5px;
+    background-color: var(--background);
+}
+
 .result-item h4 {
-    margin-bottom: 5px;
+    margin-bottom: 10px;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+/* New styles for color-coding scores */
+.result-item h4[data-score^="0"],
+.result-item h4[data-score^="1"],
+.result-item h4[data-score="20"] {
+    color: #D32F2F; /* Red */
+}
+
+.result-item h4[data-score^="2"],
+.result-item h4[data-score^="3"],
+.result-item h4[data-score="40"] {
+    color: #F57C00; /* Orange */
+}
+
+.result-item h4[data-score^="4"],
+.result-item h4[data-score^="5"],
+.result-item h4[data-score="60"] {
+    color: #FFA000; /* Amber */
+}
+
+.result-item h4[data-score^="6"],
+.result-item h4[data-score^="7"],
+.result-item h4[data-score="80"] {
+    color: #689F38; /* Light Green */
+}
+
+.result-item h4[data-score^="8"],
+.result-item h4[data-score^="9"],
+.result-item h4[data-score="100"] {
+    color: #388E3C; /* Green */
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    body {
+        padding: 10px;
+    }
+    
+    .container {
+        padding: 20px;
+    }
 }

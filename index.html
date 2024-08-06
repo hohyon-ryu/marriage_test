@@ -1,28 +1,35 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>결혼 준비 시나리오 테스트</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>커플 관계 테스트</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
     <div class="container">
-        <img src="main_image.png" alt="Marriage Test Main Image" class="main-image">
-        <h1>구체적 상황 기반 결혼 준비 시나리오 테스트</h1>
-        <p>각 시나리오를 읽고, 자신의 가능한 반응과 가장 가까운 옵션을 선택하세요.</p>
-        <form id="quiz-form">
-            <div id="quiz"></div>
-            <button type="submit" id="submit">결과 보기</button>
-        </form>
-        <div id="results" style="display:none;">
-            <h2>테스트 결과</h2>
-            <p>당신의 점수: <span id="score"></span></p>
-            <p id="interpretation"></p>
-            <h3>상세 분석:</h3>
-            <div id="detailed-results"></div>
-        </div>
+      <img
+        src="main_image.png"
+        alt="Marriage Test Main Image"
+        class="main-image"
+      />
+      <h1>구체적 상황 기반 커플 관계 테스트</h1>
+      <p>
+        각 시나리오를 읽고, 자신의 가능한 반응과 가장 가까운 옵션을 선택하세요.
+      </p>
+      <form id="quiz-form">
+        <div id="quiz"></div>
+        <button type="submit" id="submit">결과 보기</button>
+      </form>
+      <div id="results" style="display: none">
+        <h2>테스트 결과</h2>
+        <p>당신의 점수: <span id="score"></span></p>
+        <p id="interpretation"></p>
+        <h3>상세 분석:</h3>
+        <div id="detailed-results"></div>
+      </div>
     </div>
+    <script src="data.js"></script>
     <script src="script.js"></script>
-</body>
+  </body>
 </html>
