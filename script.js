@@ -40,7 +40,11 @@ function calculateScore(formData) {
         selectedScores.push(selectedScore);
     });
 
-    return { score, selectedScores };
+    // Scale the score to 0-100
+    const maxPossibleScore = quizData.questions.length * 4; // Assuming max score per question is 4
+    const scaledScore = Math.round((score / maxPossibleScore) * 100);
+
+    return { score: scaledScore, selectedScores };
 }
 
 function showResults(score, selectedScores) {
@@ -48,16 +52,20 @@ function showResults(score, selectedScores) {
     const scoreElement = document.getElementById('score');
     const interpretationElement = document.getElementById('interpretation');
     const detailedResultsElement = document.getElementById('detailed-results');
+    const temperatureElement = document.getElementById('temperature');
 
     resultsElement.style.display = 'block';
     scoreElement.innerText = score;
 
+    // Update thermometer
+    temperatureElement.style.height = `${score}%`;
+
     let interpretation = '';
-    if (score >= 55) { // 80% of 68
+    if (score >= 80) {
         interpretation = '매우 균형 잡힌 관계 대처 능력';
-    } else if (score >= 41) { // 60% of 68
+    } else if (score >= 60) {
         interpretation = '안정적인 관계 대처 능력';
-    } else if (score >= 27) { // 40% of 68
+    } else if (score >= 40) {
         interpretation = '관계 대처 능력 향상 필요';
     } else {
         interpretation = '상당한 관계 스킬 개선 필요';
@@ -68,9 +76,10 @@ function showResults(score, selectedScores) {
     let detailedHTML = '';
     quizData.questions.forEach((question, index) => {
         const selectedOption = question.options.find(option => option.score === selectedScores[index]);
+        const scaledOptionScore = Math.round((selectedOption.score / 4) * 100); // Scale option score to 0-100
         detailedHTML += `
             <div class="result-item">
-                <h4 data-score="${selectedOption.score}">질문 ${index + 1}: ${selectedOption.score}점</h4>
+                <h4 data-score="${scaledOptionScore}">질문 ${index + 1}: ${scaledOptionScore}점</h4>
                 <p>${question.question}</p>
                 <p>당신의 선택: ${selectedOption.text}</p>
                 <p>설명: ${selectedOption.explanation}</p>

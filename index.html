@@ -36,7 +36,22 @@
       </form>
       <div id="results" style="display: none">
         <h2>테스트 결과</h2>
-        <p>당신의 점수: <span id="score"></span></p>
+        <div id="thermometer-container">
+          <div id="thermometer-and-labels">
+            <div id="thermometer">
+              <div id="temperature"></div>
+            </div>
+            <div id="thermometer-labels">
+              <span>100</span>
+              <span>80</span>
+              <span>60</span>
+              <span>40</span>
+              <span>20</span>
+              <span>0</span>
+            </div>
+          </div>
+          <p id="score-display"><span id="score"></span>점</p>
+        </div>
         <p id="interpretation"></p>
         <h3>상세 분석:</h3>
         <div id="detailed-results"></div>
