@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Christian Values and Communication in Relationships Quiz</title>
+    <link rel="stylesheet" href="../style.css" />
+
+    <!-- Open Graph meta tags -->
+    <meta property="og:title" content="Christian Values and Communication in Relationships Quiz" />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:url"
+      content="https://hohyon-ryu.github.io/marriage_test/christian/"
+    />
+    <meta property="og:image" content="../main_image.png" />
+    <meta
+      property="og:description"
+      content="Explore how Christian values influence your approach to marital communication and decision-making."
+    />
+  </head>
+  <body>
+    <div class="container">
+      <img
+        src="../main_image.png"
+        alt="Christian Marriage Test Main Image"
+        class="main-image"
+      />
+      <h1>Christian Values and Communication in Relationships Quiz</h1>
+      <p>
+        Read each scenario and select the option that best reflects your likely response. This test explores how Christian values influence communication and decision-making in your marriage.
+      </p>
+      <form id="quiz-form">
+        <div id="quiz"></div>
+        <button type="submit" id="submit">View Results</button>
+      </form>
+      <div id="results" style="display: none">
+        <h2>Test Results</h2>
+        <div id="thermometer-container">
+          <div id="thermometer-and-labels">
+            <div id="thermometer">
+              <div id="temperature"></div>
+            </div>
+            <div id="thermometer-labels">
+              <span>100</span>
+              <span>80</span>
+              <span>60</span>
+              <span>40</span>
+              <span>20</span>
+              <span>0</span>
+            </div>
+          </div>
+          <p id="score-display">Your score: <span id="score"></span> points</p>
+        </div>
+        <p id="interpretation"></p>
+        <h3>Detailed Analysis:</h3>
+        <div id="detailed-results"></div>
+      </div>
+    </div>
+    <script src="data.js"></script>
+    <script src="../script.js"></script>
+  </body>
+</html>
